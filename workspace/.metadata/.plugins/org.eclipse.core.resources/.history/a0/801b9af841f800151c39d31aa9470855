@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class DrawBarcode extends Application
+{
+	
+	static int sum = 0;
+	static int roundedSum = 0;
+	public static void main(String[] args) 
+	{
+		launch(args);	
+	}
+	
+	public void init()
+	{
+		System.out.println("Inside the init() method.");
+	}
+	
+	@Override
+	public void start(Stage myStage) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("Inside the start() method.");
+		myStage.setTitle("Sameer.");
+		FlowPane rootNode = new FlowPane();
+		rootNode.setAlignment(Pos.CENTER);
+		Scene myScene = new Scene(rootNode, 500, 380);
+		myStage.setScene(myScene);
+		Label label = new Label("Please Enter a Number");
+		TextField text = new TextField("");
+		text.getText();
+		System.out.println(text);
+		rootNode.getChildren().addAll(label, text);
+		myStage.show();
+	}
+	
+	public void stop()
+	{
+		System.out.println("Inside the stop() method.");
+	}
+}

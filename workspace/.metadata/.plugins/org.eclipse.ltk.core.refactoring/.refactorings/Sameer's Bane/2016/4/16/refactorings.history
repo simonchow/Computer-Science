@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;leftHandCode&apos; in &apos;DrawBarcode2.start(...).new EventHandler() {...}.handle(...)&apos; to &apos;code&apos;&#x0D;&#x0A;- Original project: &apos;Sameer&apos;s Bane&apos;&#x0D;&#x0A;- Original element: &apos;DrawBarcode2.start(...).new EventHandler() {...}.handle(ActionEvent).leftHandCode&apos;&#x0D;&#x0A;- Renamed element: &apos;leftHandCode&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;leftHandCode&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{DrawBarcode2.java[DrawBarcode2~start~QStage;[~handle~QActionEvent;@leftHandCode!1581!1618!1589!1600!\[\[I!0!false" name="code" references="true" stamp="1460490371457" version="1.0"/>
+</session>

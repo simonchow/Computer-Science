@@ -1,0 +1,130 @@
+import java.util.Scanner;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+
+public class DrawBarcode2 extends Application
+{
+	String str = "";
+	Label response;
+	
+	static int sum = 0;
+	static int roundedSum = 0;
+	public static void main(String[] args) 
+	{
+		launch(args);	
+	}
+	
+	public void init()
+	{
+		System.out.println("Inside the init() method.");
+	}
+	
+	@Override
+	public void start(Stage myStage) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("Inside the start() method.");
+		myStage.setTitle("Sameer.");
+		FlowPane rootNode = new FlowPane();
+		rootNode.setAlignment(Pos.CENTER);
+		Scene myScene = new Scene(rootNode, 800, 500);
+		myStage.setScene(myScene);
+		Label label = new Label("Please Enter a Number");
+		TextField text = new TextField("");
+		
+		response = new Label("Push the Button to see your barcode");
+		Button btn = new Button("Done");
+		btn.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent ae) {
+				response.setText("Number Acknowledged");
+				str = text.getText();
+				System.out.println("Number Entered: " + str);
+				int[] barcode = new int[12];
+				int[][] leftHandCode = new int[12][7];
+				for(int i = 0; i < barcode.length; i++)
+				{
+					barcode[i] = str.toCharArray()[i]-48;
+					switch(barcode[i])
+					{
+							case 1: leftHandCode[i] = new int[]{0,0,0,1,1,0,1}; break;
+							case 2: leftHandCode[i] = new int[]{0,0,1,1,0,0,1}; break;
+							case 3: leftHandCode[i] = new int[]{0,0,1,0,0,1,1}; break;
+							case 4: leftHandCode[i] = new int[]{0,1,1,1,1,0,1}; break;
+							case 5: leftHandCode[i] = new int[]{0,1,0,0,0,1,1}; break;
+							case 6: leftHandCode[i] = new int[]{0,1,1,0,0,0,1}; break;
+							case 7: leftHandCode[i] = new int[]{0,1,0,1,1,1,1}; break;
+							case 8: leftHandCode[i] = new int[]{0,1,1,1,0,1,1}; break;
+							case 9: leftHandCode[i] = new int[]{0,1,1,0,1,1,1}; break;
+							case 10: leftHandCode[i] = new int[]{0,0,0,1,0,1,1}; break;
+					}
+					
+					switch(barcode[i])
+					{
+							case 1: leftHandCode[i] = new int[]{0,0,0,1,1,0,1}; break;
+							case 2: leftHandCode[i] = new int[]{0,0,1,1,0,0,1}; break;
+							case 3: leftHandCode[i] = new int[]{0,0,1,0,0,1,1}; break;
+							case 4: leftHandCode[i] = new int[]{0,1,1,1,1,0,1}; break;
+							case 5: leftHandCode[i] = new int[]{0,1,0,0,0,1,1}; break;
+							case 6: leftHandCode[i] = new int[]{0,1,1,0,0,0,1}; break;
+							case 7: leftHandCode[i] = new int[]{0,1,0,1,1,1,1}; break;
+							case 8: leftHandCode[i] = new int[]{0,1,1,1,0,1,1}; break;
+							case 9: leftHandCode[i] = new int[]{0,1,1,0,1,1,1}; break;
+							case 10: leftHandCode[i] = new int[]{0,0,0,1,0,1,1}; break;
+					}
+				}
+				
+				for(int i = 0; i < leftHandCode.length; i++)
+				{
+					for(int j = 0; j < leftHandCode[0].length; j++)
+					{
+						Rectangle rect1 = new Rectangle();
+						
+						if(leftHandCode[i][j] == 0)
+						{
+							rect1.setX(50);
+							rect1.setY(900);
+							rect1.setWidth(3);
+							rect1.setHeight(50);
+							rect1.setFill(Color.WHITE);
+						
+						}
+						
+						else
+						{
+							rect1.setX(50);
+							rect1.setY(900);
+							rect1.setWidth(3);
+							rect1.setHeight(50);						
+						}
+						
+						rootNode.getChildren().add(rect1);
+					}
+				}
+		}
+	});
+		
+		
+		
+		
+		
+		
+		rootNode.getChildren().addAll(label, text, btn, response);
+		myStage.show();
+	}
+	
+	public void stop()
+	{
+		System.out.println("Inside the stop() method.");
+	}
+}

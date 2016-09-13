@@ -1,0 +1,85 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import java.util.Scanner;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+
+public class dictionary extends Application
+{
+	String str = "";
+	Label response;
+	
+	static int roundedSum = 0;
+	public static void main(String[] args) 
+	{
+		launch(args);	
+	}
+	
+	public void init()
+	{
+		System.out.println("Inside the init() method.");
+	}
+	
+	@Override
+	public void start(Stage myStage) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("Inside the start() method.");
+		myStage.setTitle("Sameer.");
+		FlowPane rootNode = new FlowPane();
+		rootNode.setAlignment(Pos.CENTER);
+		Scene myScene = new Scene(rootNode, 800, 500);
+		myStage.setScene(myScene);
+		Label label = new Label("Vigenere Table");
+		TextField text = new TextField("");
+		response = new Label("Push the Button to see your table!");
+		Button btn = new Button("Done");
+
+		btn.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent ae) {
+				str = text.getText();
+				response.setText("Number Acknowledged");
+				str = text.getText();
+				System.out.println("Number Entered: " + str);
+		int[][] vigenereTable = new int[26][26];
+		for(int i = 0; i < vigenereTable.length; i++)
+		{
+			for(int j = 0; j < vigenereTable[0].length; j++)
+			{
+					vigenereTable[i][j] = ((i + j) % 26) + 65;
+					System.out.println(vigenereTable[j]);
+			}
+		}
+			}
+		});
+		
+		rootNode.getChildren().addAll(text, label, btn, response);
+		myStage.show();
+	}
+	
+	public void stop()
+	{
+		System.out.println("Inside the stop() method.");
+	}
+}

@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class DrawBarcode extends Application
+{
+	
+	static int sum = 0;
+	static int roundedSum = 0;
+	public static void main(String[] args) 
+	{
+		System.out.println("Please enter 11 digits for the barcode and a \"m\" for the missing digit");
+		Scanner input = new Scanner(System.in);
+		String digits = input.nextLine();
+		int[] barcode = new int[12];
+		int mTracker = 11;
+		for(int i = 0; i < barcode.length; i++)
+		{
+			if(digits.toCharArray()[i] == 'm')
+			{
+				mTracker = i;
+				continue;
+			}
+			
+			else if(i % 2 == 0)
+			{
+				barcode[i] = digits.toCharArray()[i]-48;
+				barcode[i] = 3*barcode[i];
+			}
+			
+			else
+			{
+				barcode[i] = digits.toCharArray()[i]-48;
+			}
+			sum += barcode[i];
+		}
+		
+		roundedSum = (int) (Math.ceil(((float)sum)/10)*10);
+		int mdigit = roundedSum - sum;
+		if(mTracker % 2 == 0)
+		{
+			mdigit = mdigit/3;
+		}
+		System.out.println(mdigit);
+		
+		launch(args);
+		
+		
+	}
+	
+	public void init()
+	{
+		System.out.println("Inside the init() method.");
+	}
+	
+	@Override
+	public void start(Stage myStage) throws Exception {
+		// TODO Auto-generated method stub
+
+		
+		System.out.println("Inside the start() method.");
+		myStage.setTitle("Sameer.");
+		FlowPane rootNode = new FlowPane();
+		rootNode.setAlignment(Pos.CENTER);
+		Scene myScene = new Scene(rootNode, 500, 380);
+		myStage.setScene(myScene);
+		Label label = new Label("Please Enter a Number");
+		TextField text = new TextField("");
+		rootNode.getChildren().addAll(label, text);
+		myStage.show();
+	}
+	
+	public void stop()
+	{
+		System.out.println("Inside the stop() method.");
+	}
+}

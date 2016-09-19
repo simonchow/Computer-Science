@@ -1,0 +1,51 @@
+import javafx.application.*;
+
+
+import javafx.stage.*;
+import javafx.scene.*;
+import javafx.scene.paint.*;
+import javafx.scene.shape.*;
+import javafx.animation.*;
+
+import static java.util.Calendar.*;
+import java.util.Calendar;
+
+public class SodukuSolver extends Application{
+	public static void main (String [] args)
+	{
+		launch(args);
+	}
+
+	@Override public void start(Stage primaryStage) throws Exception
+	{
+		int radius = 300;
+		int xcenter = 360;
+		int ycenter = 360;
+		int tickLength = 30;
+		int shortTick = 10;
+		
+		Color trans = Color.TRANSPARENT;
+		Color black = Color.BLACK;
+		
+
+		Rectangle frame = new Rectangle();
+		frame.setX(100);
+		frame.setY(100);
+		frame.setWidth(800);
+		frame.setHeight(800);
+		frame.setFill(Color.WHITE);
+		frame.setStroke(black);
+		
+		
+		
+		Group root = new Group();
+		root.getChildren().addAll(frame);
+		
+		Scene scene = new Scene(root, 1000, 1000);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Sudoku");
+		primaryStage.show();
+	}
+}
+
+       

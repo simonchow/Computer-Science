@@ -27,19 +27,87 @@ public class SodukuSolver extends Application{
 		Color trans = Color.TRANSPARENT;
 		Color black = Color.BLACK;
 		
-
+		int frameW = 800;
+		int frameH = 800;
+		int SceneW = 1000;
+		int SceneH = 1000;
+	
 		Rectangle frame = new Rectangle();
-		frame.setX(75);
-		frame.setY(50);
-		frame.setWidth(750);
-		frame.setHeight(750);
+		frame.setX(100);
+		frame.setY(100);
+		frame.setWidth(frameW);
+		frame.setHeight(frameH);
 		frame.setFill(Color.WHITE);
 		frame.setStroke(black);
+		frame.setStrokeWidth(5);
+		
+		Line horLines[] = new Line[8];  //Creates the larger tick marks of the clock)
+		for(int i = 0; i < horLines.length; i++)
+		{
+			horLines[i] = new Line();
+			horLines[i].setStartX((SceneW-frameW)/2 + (i + 1) * (frameW/9));
+			horLines[i].setStartY((SceneH-frameH)/2);
+			horLines[i].setEndX((SceneW-frameW)/2 + (i + 1) * (frameW/9));
+			horLines[i].setEndY(SceneH - (SceneH-frameH)/2);
+			
+			if((i+1) % 3 == 0)
+			{
+				horLines[i].setStrokeWidth(5);
+			}
+			else
+			{
+				horLines[i].setStrokeWidth(1);
+			}
+		}
+		
+		Line vertLines[] = new Line[8];  //Creates the larger tick marks of the clock)
+		for(int i = 0; i < horLines.length; i++)
+		{
+			vertLines[i] = new Line();
+			vertLines[i].setStartX(((SceneW-frameW)/2));
+			vertLines[i].setStartY((SceneH-frameH)/2 + (i + 1) * (frameH/9));
+			vertLines[i].setEndX(SceneW - (SceneW - frameW)/2);
+			vertLines[i].setEndY((SceneH-frameH)/2 + (i + 1) * (frameH/9));
+			vertLines[i].setStrokeWidth(1);
+			
+			if((i+1) % 3 == 0)
+			{
+				vertLines[i].setStrokeWidth(5);
+			}
+			else
+			{
+				vertLines[i].setStrokeWidth(1);
+			}
+		}
+		
+		
+		
+		
+		Circle test[] = new Circle[81]; 
+		
+		for(int i = 0; i < 9; i++)
+		{
+			test[i] = new Circle();
+			for(int j = 0; j < 9; j++)
+			{
+				
+			}
+		}
+		
+		
 		
 		Group root = new Group();
 		root.getChildren().addAll(frame);
+		for (int a = 0; a < horLines.length; a++)
+		{
+			root.getChildren().addAll(horLines[a]);
+		}
+		for (int a = 0; a < vertLines.length; a++)
+		{
+			root.getChildren().addAll(vertLines[a]);
+		}
 		
-		Scene scene = new Scene(root, 900, 900);
+		Scene scene = new Scene(root, SceneW, SceneH);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Sudoku");
 		primaryStage.show();

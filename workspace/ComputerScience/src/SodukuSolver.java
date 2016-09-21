@@ -3,6 +3,7 @@ import javafx.application.*;
 
 import javafx.stage.*;
 import javafx.scene.*;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 import javafx.animation.*;
@@ -18,19 +19,10 @@ public class SodukuSolver extends Application{
 
 	@Override public void start(Stage primaryStage) throws Exception
 	{
-		int radius = 300;
-		int xcenter = 360;
-		int ycenter = 360;
-		int tickLength = 30;
-		int shortTick = 10;
-		
-		Color trans = Color.TRANSPARENT;
-		Color black = Color.BLACK;
-		
-		int frameW = 800;
-		int frameH = 800;
 		int SceneW = 1000;
 		int SceneH = 1000;
+		int frameW = (int) (0.8*SceneW);
+		int frameH = (int) (0.8*SceneH);
 	
 		Rectangle frame = new Rectangle();
 		frame.setX(100);
@@ -38,10 +30,10 @@ public class SodukuSolver extends Application{
 		frame.setWidth(frameW);
 		frame.setHeight(frameH);
 		frame.setFill(Color.WHITE);
-		frame.setStroke(black);
+		frame.setStroke(Color.BLACK);
 		frame.setStrokeWidth(5);
 		
-		Line horLines[] = new Line[8];  //Creates the larger tick marks of the clock)
+		Line horLines[] = new Line[8]; 
 		for(int i = 0; i < horLines.length; i++)
 		{
 			horLines[i] = new Line();
@@ -83,15 +75,11 @@ public class SodukuSolver extends Application{
 		
 		
 		
-		Circle test[] = new Circle[81]; 
+		TextField NumInputs[] = new TextField[81]; 
 		
-		for(int i = 0; i < 9; i++)
+		for(int i = 0; i < 81; i++)
 		{
-			test[i] = new Circle();
-			for(int j = 0; j < 9; j++)
-			{
-				
-			}
+			NumInputs[i] = new TextField();
 		}
 		
 		
@@ -105,6 +93,10 @@ public class SodukuSolver extends Application{
 		for (int a = 0; a < vertLines.length; a++)
 		{
 			root.getChildren().addAll(vertLines[a]);
+		}
+		for (int a = 0; a < NumInputs.length; a++)
+		{
+			root.getChildren().addAll(NumInputs[a]);
 		}
 		
 		Scene scene = new Scene(root, SceneW, SceneH);

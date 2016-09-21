@@ -76,11 +76,11 @@ public class SudokuSolver extends Application{
 		
 		
 		TextField NumInputs[] = new TextField[81]; 
+		NumInputs[i].resize(100, 20);
 		
 		for(int i = 0; i < 81; i++)
 		{
 			NumInputs[i] = new TextField();
-			NumInputs[i].setMinSize(10,20);
 			NumInputs[i].relocate(80,150);
 		}
 		

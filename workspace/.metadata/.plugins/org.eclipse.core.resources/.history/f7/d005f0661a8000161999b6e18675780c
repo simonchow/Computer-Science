@@ -3,7 +3,6 @@ import javafx.application.*;
 
 import javafx.stage.*;
 import javafx.scene.*;
-import javafx.scene.control.TextField;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 import javafx.animation.*;
@@ -11,7 +10,7 @@ import javafx.animation.*;
 import static java.util.Calendar.*;
 import java.util.Calendar;
 
-public class SudokuSolver extends Application{
+public class SodukuSolver extends Application{
 	public static void main (String [] args)
 	{
 		launch(args);
@@ -19,6 +18,15 @@ public class SudokuSolver extends Application{
 
 	@Override public void start(Stage primaryStage) throws Exception
 	{
+		int radius = 300;
+		int xcenter = 360;
+		int ycenter = 360;
+		int tickLength = 30;
+		int shortTick = 10;
+		
+		Color trans = Color.TRANSPARENT;
+		Color black = Color.BLACK;
+		
 		int SceneW = 1000;
 		int SceneH = 1000;
 		int frameW = (int) (0.8*SceneW);
@@ -30,10 +38,10 @@ public class SudokuSolver extends Application{
 		frame.setWidth(frameW);
 		frame.setHeight(frameH);
 		frame.setFill(Color.WHITE);
-		frame.setStroke(Color.BLACK);
+		frame.setStroke(black);
 		frame.setStrokeWidth(5);
 		
-		Line horLines[] = new Line[8]; 
+		Line horLines[] = new Line[8];  //Creates the larger tick marks of the clock)
 		for(int i = 0; i < horLines.length; i++)
 		{
 			horLines[i] = new Line();
@@ -75,13 +83,17 @@ public class SudokuSolver extends Application{
 		
 		
 		
-		TextField NumInputs[] = new TextField[81]; 
+		Circle test[] = new Circle[81]; 
 		
-		for(int i = 0; i < 81; i++)
+		for(int i = 0; i < 9; i++)
 		{
-			NumInputs[i] = new TextField();
-			NumInputs[i].setMinSize(10,20);
-			NumInputs[i].relocate(80,150);
+			test[i] = new Circle();
+			for(int j = 0; j < 9; j++)
+			{
+				test[i].setRadius(25);
+				test[i].setCenterX(100);
+				test[i].setCenterY(100);
+			}
 		}
 		
 		
@@ -95,10 +107,6 @@ public class SudokuSolver extends Application{
 		for (int a = 0; a < vertLines.length; a++)
 		{
 			root.getChildren().addAll(vertLines[a]);
-		}
-		for (int a = 0; a < NumInputs.length; a++)
-		{
-			root.getChildren().addAll(NumInputs[a]);
 		}
 		
 		Scene scene = new Scene(root, SceneW, SceneH);

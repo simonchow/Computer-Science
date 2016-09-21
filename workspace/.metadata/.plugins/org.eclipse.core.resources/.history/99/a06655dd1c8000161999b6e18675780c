@@ -11,7 +11,7 @@ import javafx.animation.*;
 import static java.util.Calendar.*;
 import java.util.Calendar;
 
-public class SudokuSolver extends Application{
+public class SodukuSolver extends Application{
 	public static void main (String [] args)
 	{
 		launch(args);
@@ -80,8 +80,6 @@ public class SudokuSolver extends Application{
 		for(int i = 0; i < 81; i++)
 		{
 			NumInputs[i] = new TextField();
-			NumInputs[i].setMinSize(10,20);
-			NumInputs[i].relocate(80,150);
 		}
 		
 		
@@ -96,9 +94,9 @@ public class SudokuSolver extends Application{
 		{
 			root.getChildren().addAll(vertLines[a]);
 		}
-		for (int a = 0; a < NumInputs.length; a++)
+		for (int a = 0; a < test.length; a++)
 		{
-			root.getChildren().addAll(NumInputs[a]);
+			root.getChildren().addAll(test[a]);
 		}
 		
 		Scene scene = new Scene(root, SceneW, SceneH);

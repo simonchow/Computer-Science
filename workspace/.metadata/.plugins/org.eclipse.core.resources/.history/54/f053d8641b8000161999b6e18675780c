@@ -3,7 +3,6 @@ import javafx.application.*;
 
 import javafx.stage.*;
 import javafx.scene.*;
-import javafx.scene.control.TextField;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 import javafx.animation.*;
@@ -11,7 +10,7 @@ import javafx.animation.*;
 import static java.util.Calendar.*;
 import java.util.Calendar;
 
-public class SudokuSolver extends Application{
+public class SodukuSolver extends Application{
 	public static void main (String [] args)
 	{
 		launch(args);
@@ -75,13 +74,18 @@ public class SudokuSolver extends Application{
 		
 		
 		
-		TextField NumInputs[] = new TextField[81]; 
+		Circle test[] = new Circle[81]; 
 		
-		for(int i = 0; i < 81; i++)
+		for(int i = 0; i < 9; i++)
 		{
-			NumInputs[i] = new TextField();
-			NumInputs[i].setMinSize(10,20);
-			NumInputs[i].relocate(80,150);
+			test[i] = new Circle();
+			for(int j = 0; j < 9; j++)
+			{
+				test[i] = new Circle();
+				test[i].setRadius(25);
+				test[i].setCenterX(150+200*i);
+				test[i].setCenterY(150+200*j);
+			}
 		}
 		
 		
@@ -96,9 +100,9 @@ public class SudokuSolver extends Application{
 		{
 			root.getChildren().addAll(vertLines[a]);
 		}
-		for (int a = 0; a < NumInputs.length; a++)
+		for (int a = 0; a < test.length; a++)
 		{
-			root.getChildren().addAll(NumInputs[a]);
+			root.getChildren().addAll(test[a]);
 		}
 		
 		Scene scene = new Scene(root, SceneW, SceneH);

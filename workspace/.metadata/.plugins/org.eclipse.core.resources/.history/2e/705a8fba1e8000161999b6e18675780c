@@ -80,8 +80,7 @@ public class SudokuSolver extends Application{
 		for(int i = 0; i < 81; i++)
 		{
 			NumInputs[i] = new TextField();
-			NumInputs[i].setMinSize(10,20);
-			NumInputs[i].relocate(80,150);
+			NumInputs[i].relocate(100,100);
 		}
 		
 		

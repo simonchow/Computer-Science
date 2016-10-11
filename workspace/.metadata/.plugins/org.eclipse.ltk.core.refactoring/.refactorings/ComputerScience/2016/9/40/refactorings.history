@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;Buttons&apos; in &apos;SudokuSolver.start(...)&apos; to &apos;buttons&apos;&#x0D;&#x0A;- Original project: &apos;ComputerScience&apos;&#x0D;&#x0A;- Original element: &apos;SudokuSolver.start(Stage).Buttons&apos;&#x0D;&#x0A;- Renamed element: &apos;Buttons&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;Buttons&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{SudokuSolver.java[SudokuSolver~start~QStage;@Buttons!1937!1969!1946!1952!\[QButton;!0!false" name="buttons" references="true" stamp="1475174127560" version="1.0"/>
+</session>

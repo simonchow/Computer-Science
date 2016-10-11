@@ -129,4 +129,49 @@ public class AnalogClock extends Application{
 	}
 }
 
+/* int[][] ks = new int[9][9];
+Button[][] original = new Button[9][9];
+for(int i = 0; i <  NumInputs.length; i++)
+{
+	original[i] = Arrays.copyOf(NumInputs[i], NumInputs[i].length);
+}
+
+for(int i = 0; i < 9; i++)
+{
+	for(int j = 0; j < 9; j++)
+	{
+		if(buttonToInt(original[i][j]) != 0)
+		{
+			continue;
+		}
+		boolean tracker = true;
+		for(int k = ks[i][j] + 1; k < 10; k ++)
+		{
+			if(check(i,j,k))
+			{
+				NumInputs[i][j].setText(Integer.toString(k));
+				ks[i][j] = k;
+				System.out.println(i + " " + j + " " + k);
+				tracker = false;
+				break;
+			}
+		}
+		
+		if(tracker)
+		{
+			NumInputs[i][j].setText("");
+			ks[i][j] = 0;
+			j -= 2;
+			
+			if(j < -1)
+			{
+				System.out.println("ERROR");
+				break;
+			}
+		}
+	}
+}
+}
+});*/
+
        

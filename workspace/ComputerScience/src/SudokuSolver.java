@@ -10,7 +10,9 @@ import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 
 public class SudokuSolver extends Application{
+	//create an empty string to hold the values for inputting numbers into the sudoku board
 	String numHolder = "";
+	//creates 81 buttons, one for each spot on the sudoku board
 	Button[][] NumInputs = new Button[9][9]; 
 
 	public static void main (String [] args)
@@ -20,6 +22,7 @@ public class SudokuSolver extends Application{
 
 	@Override public void start(Stage primaryStage) throws Exception
 	{
+		//sets the dimensions of the scene and the sudoku board
 		int SceneW = 1000;
 		int SceneH = 1000;
 		int frameW = (int) (0.8*SceneW);
@@ -35,6 +38,7 @@ public class SudokuSolver extends Application{
 		frame.setStroke(Color.BLACK);
 		frame.setStrokeWidth(5);
 		
+		//Draws the squares for the sudoku board
 		Line horLines[] = new Line[8]; 
 		for(int i = 0; i < horLines.length; i++)
 		{
@@ -53,7 +57,6 @@ public class SudokuSolver extends Application{
 				horLines[i].setStrokeWidth(1);
 			}
 		}
-		
 		Line vertLines[] = new Line[8];  //Creates the larger tick marks of the clock)
 		for(int i = 0; i < horLines.length; i++)
 		{
@@ -74,7 +77,7 @@ public class SudokuSolver extends Application{
 			}
 		}
 		
-		
+		//creates the buttons for selecting which number you want to enter into the sudoku board (these are the top buttons)
 		Button[] buttons = new Button[9];
 		for(int i = 0; i < 9; i++)
 		{
@@ -93,7 +96,8 @@ public class SudokuSolver extends Application{
 				}
 			});
 		}
-				
+			
+		//creates a blank button to erase any number input on the board
 		Button blankBtn = new Button();
 		blankBtn.setText("Erase");
 		blankBtn.setMinSize(50, 50);
@@ -120,7 +124,7 @@ public class SudokuSolver extends Application{
 				final int a = i, b = j;
 				NumInputs[i][j].setOnAction(new EventHandler<ActionEvent>() {
 					@Override
-					//placing the numbers into the sudoku board
+					//places the selected numbers (from the top buttons) into the sudoku board
 					public void handle(ActionEvent event)
 					{
 						if(numHolder.equals("") || check(a, b, Integer.parseInt(numHolder)))
@@ -133,20 +137,21 @@ public class SudokuSolver extends Application{
 		}
 		
 		
+		//Creation of go button to solve the sudoku
 		Button goBtn = new Button();
 		goBtn.setText("Go!");
 		goBtn.setMinSize(100, 50);
 		goBtn.relocate(200, SceneH - 75);
 		goBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			//algorithm
 			public void handle(ActionEvent event)
 			{
+				//runs the sudoku solving algorithm (at the bottom of this program)
 				solver(0, 0);
 			}
 		});
 		
-		
+		//Creation of the reset button to reset the board at any time (typically after solving one sudoku)
 		Button resetBtn = new Button();
 		resetBtn.setText("Reset");
 		resetBtn.setMinSize(150, 50);
@@ -191,7 +196,7 @@ public class SudokuSolver extends Application{
 		primaryStage.show();
 	}
 
-	
+	//this check method makes sure that there are no two of the same numbers in any row, column or box
 	public boolean check(int row, int col, int num)
 	{
 		for(int i = 0; i < 9; i++)
@@ -227,6 +232,7 @@ public class SudokuSolver extends Application{
 		return true;
 	}
 	
+	//this method converts the text in a button to an integer as the check and solve methods require number inputs to perform their functions
 	public int buttonToInt(Button b)
 	{
 		String text = b.getText();
@@ -237,7 +243,7 @@ public class SudokuSolver extends Application{
 		else return Integer.parseInt(text);
 	}
 
-
+	//sudoku solving algorithm
 	public boolean solver(int row, int col)
 	{
 		//goes to next row
@@ -271,16 +277,20 @@ public class SudokuSolver extends Application{
 					{
 						NumInputs[row][col].setText(Integer.toString(i));
 						
+						//moves on to next button
+						// if it succeeded, this number doesn't change
 						if(solver(row, col + 1))
 						{
 							return true;
 						}
+						//otherwise, it didn't work. sets button as blank
 						else
 						{
 							NumInputs[row][col].setText("");
 						}
 					}
 				}
+				//if no number works for a specific button
 				return false;
 			}
 		}
